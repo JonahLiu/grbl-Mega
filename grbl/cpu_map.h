@@ -372,30 +372,30 @@
   #define DISABLE_HW_LIMITS
 
   // Define spindle enable and spindle direction output pins.
-  #define SPINDLE_ENABLE_DDR      DDRB
-  #define SPINDLE_ENABLE_PORT     PORTB
-  #define SPINDLE_ENABLE_BIT      4 // Pin D10 (B4)
-  #define SPINDLE_DIRECTION_DDR   DDRB
-  #define SPINDLE_DIRECTION_PORT  PORTB
-  #define SPINDLE_DIRECTION_BIT   5 // Pin D11 (B5)
+  #define SPINDLE_ENABLE_DDR      DDRG
+  #define SPINDLE_ENABLE_PORT     PORTG
+  #define SPINDLE_ENABLE_BIT      5 // Pin D4 (G5)
+  #define SPINDLE_DIRECTION_DDR   DDRE
+  #define SPINDLE_DIRECTION_PORT  PORTE
+  #define SPINDLE_DIRECTION_BIT   3 // Pin D5 (E3)
 
   // Define flood and mist coolant enable output pins.
-  #define COOLANT_FLOOD_DDR   DDRB
-  #define COOLANT_FLOOD_PORT  PORTB
-  #define COOLANT_FLOOD_BIT   6 // Pin D12 (B6)
-  #define COOLANT_MIST_DDR    DDRB
-  #define COOLANT_MIST_PORT   PORTB
-  #define COOLANT_MIST_BIT    7 // Pin D13 (B7)
+  #define COOLANT_FLOOD_DDR   DDRE
+  #define COOLANT_FLOOD_PORT  PORTE
+  #define COOLANT_FLOOD_BIT   5 // Pin D3 (E5)
+  #define COOLANT_MIST_DDR    DDRE
+  #define COOLANT_MIST_PORT   PORTE
+  #define COOLANT_MIST_BIT    4 // Pin D2 (E4)
 
   // Define user-control CONTROLs (cycle start, reset, feed hold) input pins.
   // NOTE: All CONTROLs pins must be on the same port and not on a port with other input pins (limits).
-  #define CONTROL_DDR       DDRL
-  #define CONTROL_PIN       PINL
-  #define CONTROL_PORT      PORTL
-  #define CONTROL_RESET_BIT         7  // Pin D42 (L7)
-  #define CONTROL_FEED_HOLD_BIT     5  // Pin D44 (L5)
-  #define CONTROL_CYCLE_START_BIT   3  // Pin D46 (L3)
-  #define CONTROL_SAFETY_DOOR_BIT   1  // Pin D48 (L1)
+  #define CONTROL_DDR       DDRD
+  #define CONTROL_PIN       PIND
+  #define CONTROL_PORT      PORTD
+  #define CONTROL_RESET_BIT         0  // Pin D21 (D0)
+  #define CONTROL_FEED_HOLD_BIT     1  // Pin D20 (D1)
+  #define CONTROL_CYCLE_START_BIT   2  // Pin D19 (D2)
+  #define CONTROL_SAFETY_DOOR_BIT   3  // Pin D18 (D3)
   #define CONTROL_INT       PCIE2  // Pin change interrupt enable pin
   #define CONTROL_INT_vect  PCINT2_vect
   #define CONTROL_PCMSK     PCMSK2 // Pin change interrupt register
@@ -417,7 +417,7 @@
   #define SPINDLE_PWM_OFF_VALUE     0
   #define SPINDLE_PWM_RANGE         (SPINDLE_PWM_MAX_VALUE-SPINDLE_PWM_MIN_VALUE)
 
-  //Control Digital Pin 6 which is Servo 2 signal pin on Ramps 1.4 board
+  //Control Digital Pin 8 (H5) is timer4 output C 
   #define SPINDLE_TCCRA_REGISTER    TCCR4A
   #define SPINDLE_TCCRB_REGISTER    TCCR4B
   #define SPINDLE_OCR_REGISTER      OCR4C
@@ -425,14 +425,14 @@
 
   // 1/8 Prescaler, 16-bit Fast PWM mode
   #define SPINDLE_TCCRA_INIT_MASK ((1<<WGM40) | (1<<WGM41))
-  #define SPINDLE_TCCRB_INIT_MASK ((1<<WGM42) | (1<<WGM43) | (1<<CS41)) 
+  #define SPINDLE_TCCRB_INIT_MASK ((1<<WGM42) | (1<<WGM43) | (1<<CS41))
   #define SPINDLE_OCRA_REGISTER   OCR4A // 16-bit Fast PWM mode requires top reset value stored here.
   #define SPINDLE_OCRA_TOP_VALUE  0x0400 // PWM counter reset value. Should be the same as PWM_MAX_VALUE in hex.
 
   // Define spindle output pins.
   #define SPINDLE_PWM_DDR   DDRH
   #define SPINDLE_PWM_PORT  PORTH
-  #define SPINDLE_PWM_BIT   6 // Pin D9 (H6)
+  #define SPINDLE_PWM_BIT   5 // Pin D8 (H5)
 
 #endif // CPU_MAP_2560_ULTIMAKER_BOARD
 
